@@ -19,6 +19,7 @@ def stock_picker(stock_prices)
   end 
 
   p pair
+  pair
 end
 
 stock_picker(stock_prices)
