@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.3)
+    colorize (1.1.0)
     json (2.15.1)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
@@ -36,6 +37,7 @@ PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  colorize (~> 1.1)
   rubocop (~> 1.81)
 
 BUNDLED WITH
