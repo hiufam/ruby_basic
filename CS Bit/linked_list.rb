@@ -69,8 +69,13 @@ class LinkedList
     false
   end
 
-  def find(value)
-    traverse { |index, node| return index if node.value == value }
+  def find(value, &block)
+    if block_given?
+      traverse { |index, node| return index if block.call(node, value) }
+    else
+      traverse { |index, node| return index if node.value == value }
+    end
+
     nil
   end
 
@@ -111,11 +116,12 @@ class LinkedList
   end
 
   def remove_at(index)
+    return @head = nil if index.zero?
     return nil if index > size - 1 || size.negative?
 
     front_node = traverse(index - 1)[1]
     behind_node = traverse(index + 1)[1]
 
-    front_node.next_node = behind_node
+    front_node.next_node = behind_node unless front_node.nil?
   end
 end
