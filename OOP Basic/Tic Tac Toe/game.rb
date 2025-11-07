@@ -44,7 +44,7 @@ class Game
 
       begin
         error = ''
-        pos = board.place_piece_by_index(turn, move_input.to_i)
+        pos = place_piece(turn, move_input.to_i)
 
         check_win?(turn, pos)
 
@@ -57,6 +57,10 @@ class Game
       end
 
     end
+  end
+
+  def place_piece(turn, input)
+    board.place_piece_by_index(turn, input)
   end
 
   def end_game
