@@ -21,7 +21,6 @@ class ChessBoard
 
   def initialize
     @pieces_map = Array.new(8) { Array.new(8) }
-    @pieces = { black: [], white: [] }
 
     w_king = King.new(self, 'white')
     w_rook_l = Rook.new(self, 'white')

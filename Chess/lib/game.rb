@@ -1,10 +1,12 @@
+require 'yaml'
 require_relative './display'
 require_relative './chess_board'
 
 class Game
   include Display
 
-  attr_accessor :is_playing, :board, :turn, :chose_piece, :chose_move, :promotable_piece, :promoting_piece
+  attr_accessor :is_playing, :board, :turn, :chose_piece, :chose_move, :promotable_piece, :promoting_piece,
+                :saving_game, :getting_saved_game
 
   def initialize(board = ChessBoard.new)
     @board = board
@@ -13,6 +15,8 @@ class Game
     @chose_move = nil
     @promotable_piece = nil
     @promoting_piece = false
+    @saving_game = false
+    @getting_saved_game = false
   end
 
   def start_game
@@ -27,7 +31,7 @@ class Game
   def game_loop
     error = ''
     while @is_playing
-      system('cls') # clear terminal
+      # system('cls') # clear terminal
 
       display_board(@board.pieces_map)
       display_error(error) unless error.empty?
@@ -66,6 +70,34 @@ class Game
     nil
   end
 
+  def get_saved_file(file_name = 'save_file')
+    dir_name = File.join(__dir__, '/saves')
+    yaml_file = dir_name << "/#{file_name}.yml"
+
+    yaml_content = File.read(yaml_file)
+    data = YAML.safe_load(yaml_content,
+                          permitted_classes: [Symbol, Rook, ChessBoard, King, Queen, Bishop, Knight, Pawn, Vector], aliases: true) # rubocop:disable Layout/LineLength
+
+    @board.pieces_map = data[:pieces_map]
+    b_king = @board.pieces[:black].select { |piece| piece.type == 'king' }[0]
+    w_king = @board.pieces[:white].select { |piece| piece.type == 'king' }[0]
+
+    @board.kings = { white: w_king, black: b_king }
+
+    @getting_saved_game = false
+  end
+
+  def save_game(file_name = 'save_file')
+    dir_name = File.join(File.dirname(__FILE__), './saves')
+
+    Dir.mkdir(dir_name) unless File.exist?(dir_name) # make dir if not exist
+
+    file = File.join(dir_name, "./#{file_name}.yml")
+    File.open(file, 'w') { |f| f.puts YAML.dump({ pieces_map: @board.pieces_map }) } # raw dog dumping
+
+    @saving_game = false
+  end
+
   def player_input
     input = gets.chomp
 
@@ -73,6 +105,18 @@ class Game
 
     if input.to_s == 'rm'
       reset_state
+      return
+    end
+
+    if input.to_s == 'sv'
+      @saving_game = true
+      save_game
+      return
+    end
+
+    if input.to_s == 'gg'
+      get_saved_file
+      @getting_saved_game = true
       return
     end
 

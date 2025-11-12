@@ -23,7 +23,7 @@ module Display
   end
 
   def display_hint(promote_piece)
-    puts "commands: quit - \"q\", reset move - \"rm\" #{promote_piece.nil? ? '' : ', promote - "p"'}"
+    puts "commands: quit - \"q\", reset move - \"rm\", save game - \"sv\", get saved game - \"gg\" #{promote_piece.nil? ? '' : ', promote - "p"'}"
   end
 
   def display_promote_pieces
@@ -31,7 +31,7 @@ module Display
   end
 
   def display_choose_piece
-    puts 'choose piece:'
+    puts 'choose piece/command:'
   end
 
   def display_choose_move(piece)

@@ -1,0 +1,335 @@
+---
+:pieces_map: &1
+- - !ruby/object:Rook
+    chess_board: &2 !ruby/object:ChessBoard
+      pieces_map: *1
+      kings:
+        :white: &4 !ruby/object:King
+          chess_board: *2
+          type: king
+          side: white
+          prev_move:
+          pos: !ruby/object:Vector
+            elements:
+            - 4
+            - 0
+        :black: &3 !ruby/object:King
+          chess_board: *2
+          type: king
+          side: black
+          prev_move:
+          pos: !ruby/object:Vector
+            elements:
+            - 4
+            - 7
+    type: rook
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 0
+      - 7
+  - !ruby/object:Knight
+    chess_board: *2
+    type: knight
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 1
+      - 7
+  - !ruby/object:Bishop
+    chess_board: *2
+    type: bishop
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 2
+      - 7
+  - !ruby/object:Queen
+    chess_board: *2
+    type: queen
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 3
+      - 7
+  - *3
+  - !ruby/object:Bishop
+    chess_board: *2
+    type: bishop
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 5
+      - 7
+  - !ruby/object:Knight
+    chess_board: *2
+    type: knight
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 6
+      - 7
+  - !ruby/object:Rook
+    chess_board: *2
+    type: rook
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 7
+      - 7
+- - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 0
+      - 6
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 1
+      - 6
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 2
+      - 6
+  -
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 4
+      - 6
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 5
+      - 6
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 6
+      - 6
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: black
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 7
+      - 6
+- -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+- -
+  -
+  -
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: black
+    prev_move: !ruby/object:Vector
+      elements:
+      - 3
+      - 6
+    pos: !ruby/object:Vector
+      elements:
+      - 3
+      - 4
+  -
+  -
+  -
+  -
+- -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+- -
+  -
+  -
+  -
+  -
+  - !ruby/object:Knight
+    chess_board: *2
+    type: knight
+    side: white
+    prev_move: !ruby/object:Vector
+      elements:
+      - 6
+      - 0
+    pos: !ruby/object:Vector
+      elements:
+      - 5
+      - 2
+  -
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: white
+    prev_move: !ruby/object:Vector
+      elements:
+      - 7
+      - 1
+    pos: !ruby/object:Vector
+      elements:
+      - 7
+      - 2
+- - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 0
+      - 1
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 1
+      - 1
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 2
+      - 1
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 3
+      - 1
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 4
+      - 1
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 5
+      - 1
+  - !ruby/object:Pawn
+    chess_board: *2
+    type: pawn
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 6
+      - 1
+  -
+- - !ruby/object:Rook
+    chess_board: *2
+    type: rook
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 0
+      - 0
+  - !ruby/object:Knight
+    chess_board: *2
+    type: knight
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 1
+      - 0
+  - !ruby/object:Bishop
+    chess_board: *2
+    type: bishop
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 2
+      - 0
+  - !ruby/object:Queen
+    chess_board: *2
+    type: queen
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 3
+      - 0
+  - *4
+  - !ruby/object:Bishop
+    chess_board: *2
+    type: bishop
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 5
+      - 0
+  -
+  - !ruby/object:Rook
+    chess_board: *2
+    type: rook
+    side: white
+    prev_move:
+    pos: !ruby/object:Vector
+      elements:
+      - 7
+      - 0
