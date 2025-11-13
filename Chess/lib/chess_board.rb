@@ -124,9 +124,8 @@ class ChessBoard
 
     piece = get_piece(interprete_move(coord))
 
-    raise StandardError, 'Cannot pick opponent piece' if piece.side != side
-
     raise StandardError, 'Piece does not exist' if piece.nil?
+    raise StandardError, 'Cannot pick opponent piece' if piece.side != side
   end
 
   def validate_move(coord, piece)

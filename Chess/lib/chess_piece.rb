@@ -25,6 +25,7 @@ class ChessPiece
     false
   end
 
+  # This should be in the chess_board instead. I believed
   def change_pos(new_pos)
     unless @pos.nil?
       temp_pos = @pos
@@ -37,9 +38,7 @@ class ChessPiece
   end
 
   # cast from start and return maximum number of empty positions, include and/or end
-  def ray_cast(start_pos, m_end_pos, on_piece_casted = nil)
-    end_pos = m_end_pos
-
+  def ray_cast(start_pos, end_pos, on_piece_casted = nil)
     pos = []
     direction = (end_pos - start_pos).zero? ? Vector[0, 0] : (end_pos - start_pos).normalize
 

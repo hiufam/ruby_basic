@@ -31,7 +31,7 @@ class Game
   def game_loop
     error = ''
     while @is_playing
-      # system('cls') # clear terminal
+      system('cls') # clear terminal
 
       display_board(@board.pieces_map)
       display_error(error) unless error.empty?
@@ -65,14 +65,17 @@ class Game
   end
 
   def check_win
-    stop_game unless @board.pieces[:white].include?(@board.kings[:white])
-    stop_game unless @board.pieces[:black].include?(@board.kings[:black])
+    return stop_game unless @board.pieces[:white].include?(@board.kings[:white])
+    return stop_game unless @board.pieces[:black].include?(@board.kings[:black])
+
     nil
   end
 
-  def get_saved_file(file_name = 'save_file')
+  def load_game(file_name = 'save_file')
     dir_name = File.join(__dir__, '/saves')
     yaml_file = dir_name << "/#{file_name}.yml"
+
+    raise StandardError, 'Save file does not exist' unless File.exist?(yaml_file)
 
     yaml_content = File.read(yaml_file)
     data = YAML.safe_load(yaml_content,
@@ -115,7 +118,7 @@ class Game
     end
 
     if input.to_s == 'gg'
-      get_saved_file
+      load_game
       @getting_saved_game = true
       return
     end
